@@ -1,0 +1,225 @@
+<%- include('header'); %>
+
+<div class="post-container">
+  <div class="post-inner" style="margin-top: 2.7rem;">
+    <div class="post-header">
+      <div class="img-container">
+        <%if(title == 'Have Gastric Problems? Here Are 3 Reasons To Choose Homeopathy'){%>
+
+        <img class="post-img" src="/images/gas-blog-post.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'Homeopathy Treatment For Acne: How Can It Work For You?'){%>
+
+        <img class="post-img" src="/images/acne-blog-post.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'Can Homeopathy Cure Allergy? A Quick Guide'){%>
+
+        <img class="post-img" src="/images/allergy-blog-post.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'Why More People Now Trust Homeopathy Over Other Options?'){%>
+
+        <img class="post-img" src="/images/trust-homeopath-blog-post.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'Top 4 Benefits Of Going Through Homeopathy Treatment For Hair Loss'){%>
+
+        <img class="post-img" src="/images/benefits-blog-post.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'What Makes Homeopathy A Reliable Modern-Day Treatment For Hair Loss?'){%>
+
+        <img class="post-img" src="/images/reliable-blog-post.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == '5 Best Homeopathy Medicines for Hairfall'){%>
+
+        <img class="post-img" src="/images/doctor-speaks-sulphur.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'Acute Diseases'){%>
+
+        <img class="post-img" src="/images/doctor-speaks-acute.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'PCOD'){%>
+
+        <img class="post-img" src="/images/doctor-speaks-pcod.webp" alt="gas related problem blog post" />
+
+        <%}else if(title == 'Hairloss'){%>
+
+        <img class="post-img" src="/images/doctor-speaks-hairloss.webp" alt="gas related problem blog post" />
+
+        <%}%>
+
+      </div>
+
+      <div class="post-category">
+
+        <%if(category == 'Generic'){%>
+        <p>Category: <a href="/generic">Generic</a></p>
+        <%}else if(category == 'Doctor Speaks'){%>
+        <p>Category: <a href="/doctorspeaks">Doctor Speaks</a></p>
+        <%}%>
+
+        <p>Posted On: <%=date%></p>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <div class="post-title">
+        <h4><%=title%></h4>
+      </div>
+
+      <%-include('post-text');%>
+
+      <div class="author" style="margin-top: 4rem;">
+        <div class="author-heading" style="padding: 0.5rem 0;">
+          <h4 style="font-weight: 600;"><i class="fa-solid fa-user"></i> Author</h4>
+        </div>
+
+        <div class="author-name" style="padding: 0.5rem 0;">
+          <p><a href="/about">Dr. Snigdhodip Saha</a></p>
+        </div>
+      </div>
+
+      <div class="comments" style="margin-top: 5rem;">
+        <div class="comments-heading">
+          <h4 style="font-weight: 600;"><i class="fa-solid fa-comments"></i> Comments(<%=comments.length%>)</h4>
+        </div>
+
+        <div class="comments-text"
+          style="display: flex; flex-direction: column; align-items: flex-start; padding: 1rem 0;">
+
+          <%for(var i = 0; i<comments.length; i++){%>
+
+          <div class="comment" style="padding: 1rem; width: 45rem; background: #EEEEEE; margin: 1rem 0;">
+            <div class="name" style="padding: 0.5rem;">
+              <p style="font-weight: 600;"><%=comments[i].name%></p>
+            </div>
+
+            <div class="content" style="padding: 0.5rem;">
+              <p style="font-size: 0.95rem;"><%=comments[i].text%></p>
+            </div>
+
+            <div class="post-date-time" style="display: flex; justify-content: flex-end;">
+              <div class="posting-date" style="width: 15rem; font-size: 0.8rem; padding: 0.5rem;">
+                <p><%=comments[i].postingDate%> at <%=comments[i].postingTime%></p>
+              </div>
+            </div>
+          </div>
+
+          <%}%>
+
+        </div>
+      </div>
+
+      <div class="leave-comment" style="margin-top: 5rem;">
+        <div class="leave-comment-heading">
+          <h4 style="font-weight: 600;">Leave a comment:</h4>
+          <p style="font-size: 0.9rem;">(Required fileds are marked '*')</p>
+        </div>
+
+        <div class="comment-form" style="background: #F7EFE5; padding: 2rem; margin-top: 2rem;">
+          <form action="/comments" method="post" style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="name">
+              <label for="#name">Full Name *</label>
+              <input type="text" name="commentorname" id="name" autocomplete="off">
+            </div>
+
+            <div class="email">
+              <label for="#email">Email *</label>
+              <p style="font-size: 0.85rem;">(We won't be publishing your email)</p>
+              <input type="text" name="commentoremail" id="email" autocomplete="off">
+            </div>
+
+            <div class="website">
+              <label for="#website">Website</label>
+              <input type="text" name="commentorwebsite" id="website" autocomplete="off">
+            </div>
+
+            <div class="comment-text">
+              <label for="comment">Comment *</label>
+              <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="post-btn" style="width: 5rem;">
+              <button type="submit" class="btn btn-primary" name="title" value="<%=title%>">Post</button>
+        </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="recent-posts" style="width: 20rem; display: flex; flex-direction: column;">
+  <div class="container-heading">
+    <p style="font-weight: 600;">Recent Posts</p>
+  </div>
+
+  <%for(var i = 0; i<genericPosts.length;i++){%>
+
+  <div class="container-content" style="display: flex; gap: 1rem; padding: 0.85rem 0;">
+    <div style="display: inline-block; display: flex; align-items: center;">
+      <%if(genericPosts[i].title == 'Have Gastric Problems? Here Are 3 Reasons To Choose Homeopathy'){%>
+
+      <img src="/images/recent-posts-img/gas-problem.webp" alt="recent posts from dr snigdhodip saha"
+        style="width: 3rem">
+
+      <%}else if(genericPosts[i].title == 'Homeopathy Treatment For Acne: How Can It Work For You?'){%>
+
+      <img src="/images/recent-posts-img/acne-problem.webp" alt="recent posts from dr snigdhodip saha"
+        style="width: 3rem">
+
+      <%}else if(genericPosts[i].title == 'Can Homeopathy Cure Allergy? A Quick Guide'){%>
+
+      <img src="/images/recent-posts-img/allergy-problem.webp" alt="recent posts from dr snigdhodip saha"
+        style="width: 3rem">
+
+      <%}else if(genericPosts[i].title == 'Why More People Now Trust Homeopathy Over Other Options?'){%>
+
+      <img src="/images/recent-posts-img/trust-homeopathy.webp" alt="recent posts from dr snigdhodip saha"
+        style="width: 3rem">
+
+      <%}else if(genericPosts[i].title == 'Top 4 Benefits Of Going Through Homeopathy Treatment For Hair Loss'){%>
+
+      <img src="/images/recent-posts-img/hairloss-problem.webp" alt="recent posts from dr snigdhodip saha"
+        style="width: 3rem">
+
+      <%}else if(genericPosts[i].title == 'What Makes Homeopathy A Reliable Modern-Day Treatment For Hair Loss?'){%>
+
+      <img src="/images/recent-posts-img/reliable-homeopathy.webp" alt="recent posts from dr snigdhodip saha"
+        style="width: 3rem">
+
+      <%}%>
+
+    </div>
+
+    <div class="post-title">
+      <form action="/blog-redirect" method="post">
+        <button type="submit" name="title" value="<%=genericPosts[i].title%>" style="font-size:
+      0.85rem; color: #d06224; text-align: left;"><em><%=genericPosts[i].title%></em></button>
+      </form>
+      <p style="font-size: 0.7rem;"><%=genericPosts[i].date%></p>
+    </div>
+  </div>
+
+  <%}%>
+
+</div>
+</div>
+
+<script>
+  changeActiveLink();
+
+  function changeActiveLink() {
+    const navItem = document.querySelectorAll(".nav-items");
+    navItem.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+      if (item.classList.contains("blog")) {
+        item.classList.add("active");
+      }
+    });
+  }
+</script>
+
+<%- include('footer'); %>
+
+  <%- include('navAnimationScript'); %>

@@ -1,0 +1,22 @@
+<script>
+
+    const logoMain = document.querySelector('.logo-main');
+
+    const tl7 = gsap.timeline({
+        scrollTrigger: {
+            trigger: 'body',
+            start: "0",
+            end: "15%",
+            scrub: 2,
+        },
+    });
+
+
+    tl7.fromTo(logoMain, { opacity: 0 }, { opacity: 1 });
+
+    const winWidth = window.outerWidth;
+    if (winWidth <= 1440) {
+        tl12.to(sideBarMenu, { scale: 1.25 });
+    }
+
+</script>

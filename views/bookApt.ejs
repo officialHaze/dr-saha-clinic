@@ -1,0 +1,221 @@
+<%- include('header'); %>
+
+<section id="prices" style="color: black; background: #E8D2A6;">
+
+    <div class="prices-container" style="padding: 5rem 0;">
+        <div class="prices-inner" style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="price-heading" style="display: flex; justify-content: center;">
+                <h1>Our Prices</h1>
+            </div>
+
+            <div class="pricing-info" style="display: flex; justify-content: space-evenly; text-align: center;">
+                <div class="special-combo" style="width: 40rem;">
+                    <div class="combo-heading">
+                        <h3>Get our special combo</h3>
+                    </div>
+                    <div class="combo-text" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <p><span style="font-weight: 600; color: black;">DMH Hair Regrowth</span> :- Home Use</p>
+                        <p><span style="font-weight: 600; color: black;">How to use it</span> :– Use one bottle DMH Hair
+                            Regrowth with 1.5mm Dermaroller in every 15 days</p>
+                        <p><span style="font-weight: 600; color: black;">*Avail free video call demo after you receive
+                                the medicines*</span></p>
+                        <p><span style="font-weight: 600; color: black;">*Free Home Delivery available*</span></p>
+                    </div>
+                </div>
+
+                <div class="pricing" style="width: 40rem;">
+                    <div class="pricing-heading">
+                        <h3>Pricing</h3>
+                    </div>
+                    <div class="pricing-text"
+                        style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <p>1 Bottle of DMH Hair Regrowth :– <span style="font-weight: 600; color: black;">Rs.
+                                1000</span>
+                        </p>
+                        <p>2 Bottless of DMH Hair Regrowth :– <span style="font-weight: 600; color: black;">Rs.
+                                1500(you save Rs. 500)</span>
+                        </p>
+                        <p>6 Bottles of DMH Hair Regrowth :– <span style="font-weight: 600; color: black;">Rs.
+                                3500(you save Rs.2500)</span>(Super Saver offer) – <span
+                                style="font-weight: 600; color: black;">Recommended</span>
+                        </p>
+                        <p>Full Hair Regrowth Course – 20 Bottles of DMH Hair Regrowth :– <span
+                                style="font-weight: 600; color: black;">Rs.
+                                10000(you save Rs. 10,000)</span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="consult-message">
+                <div class="fees" style="display: flex; justify-content: center;">
+                    <p><em><span style="font-weight: 600; color:black;">Consultation fees (offline/online) :- Rs.450
+                                only</span></em></p>
+                </div>
+
+                <div class="consultation-message" style="display: flex; flex-direction: column; align-items: center;">
+                    <p><em>If you want to purchase any of our DMH hair regrowth sol., you don't have to book an
+                            appointment.</em></p>
+                    <p><em>Kindly call us @ <a href="tel: 9007488925">9007488925</a></em></p>
+                </div>
+
+                <div class="consult-warning" style="display: flex; justify-content: center; margin-top: 2rem;">
+                    <p><em><span style="font-weight: 600; color: black;">Note : Book an appointment only if
+                                you require a consultation. Thank you.</span></em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<%if(status == 'fill-details'){%>
+
+<section id="book-appt" style="height: 100vh; color: black;">
+
+    <div class="booking-container" style="padding: 7rem 20rem; height: 100vh;">
+
+        <div class="booking-inner">
+            <form action="/apptbook" method="post" style="display: flex; flex-direction: column; gap: 3rem;">
+                <div class="inner-heading">
+                    <h1>Book your appointment</h1>
+                    <p>(All the fields are necessary)</p>
+                </div>
+                <div class="inner-inputs" style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div><input type="text" name="fName" placeholder="First Name"></div>
+                    <div><input type="text" name="lName" placeholder="Last Name"></div>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+91</span>
+                        <input type="tel" name="phoneNumber" placeholder="Phone Number" style="width: 27rem;">
+                    </div>
+                    <div><input type="email" name="eMail" placeholder="Email"></div>
+                    <div><label for="#date" style="font-weight: 600;">Choose your preferred Date:</label>
+                    </div>
+                    <div><input type="date" name="date" id="date"></div>
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<%}else if(status == 'select-time'){%>
+
+<section id="book-appt" style="height: 100vh; color: black;">
+
+    <div class="booking-container" style="padding: 7rem 20rem; height: 100vh;">
+
+        <div class="booking-inner">
+            <form action="/timeset" method="post" style="display: flex; flex-direction: column; gap: 3rem;">
+                <div class="inner-heading">
+                    <h1>Kindly check and confirm the details</h1>
+                    <!-- <p>(All the fields are necessary)</p> -->
+                </div>
+                <div class="inner-inputs" style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <p><span style="font-weight: 600; color: black;">Patient's Full Name:</span> <%=fName%>
+                            <%=lName%></p>
+                    </div>
+                    <div>
+                        <p><span style="font-weight: 600; color: black;">Patient's Contact:</span> <%=phoneNo%></p>
+                    </div>
+                    <div>
+                        <p><span style="font-weight: 600; color: black;">Patient's Email:</span> <%=email%></p>
+                    </div>
+                    <div>
+                        <p><span style="font-weight: 600; color: black;">Preferred booking date:</span>
+                            <%=prefDate%>
+                        </p>
+                    </div>
+                    <div class="booked-slots">
+                        <p><span style="font-weight: 600; color: black;">Slots already booked for the chosen
+                                date:</span>
+                            <i class="fa-solid fa-question"
+                                style="padding: 0.5rem; border-radius: 50%; background: whitesmoke; font-size: 0.85rem;"
+                                data-bs-toggle="popover"
+                                data-bs-content="If no slot is visible, it means no patient has booked their slot for the chosen date yet."
+                                data-bs-trigger="hover focus click"></i>
+                        </p>
+                        <div class="slots-container" style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+                            <%for(var i = 0; i<patientDetails.length; i++){%>
+
+                            <%if(patientDetails[i].bookingdate == dateCheck){%>
+
+                            <div class="slots">
+                                <p><%=patientDetails[i].bookingtime%></p>
+                            </div>
+                            <%}%>
+                           <%}%>
+                        </div>
+                    </div>
+                    <div><label for="#time" style="font-weight: 600;">Choose your preferred slot accordingly:</label>
+                        <p style="font-size: 0.9rem;">(Availability:- Mon-Sat: 10AM-7PM & Sun: 10AM-4PM)</p>
+                    </div>
+                    <div><input type="time" name="time" id="time"></div>
+                </div>
+
+                <div class="submit-btn" style="display: flex; gap: 1.5rem;">
+                    <button type="submit" name="bookingType" value="online" class="btn btn-primary">Book my online
+                        appointment</button>
+                    <button type="submit" name="bookingType" value="offline" class="btn btn-primary">Book my offline
+                        appointment</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<%}%>
+
+
+
+                        <script>
+                            const navItems = document.querySelectorAll('.nav-items');
+
+                            changeActiveLink();
+
+                            function changeActiveLink() {
+                                navItems.forEach((item) => {
+                                    if (item.classList.contains("active")) {
+                                        item.classList.remove("active");
+                                    }
+                                    if (item.classList.contains('<%= pageType %>')) {
+                                        item.classList.add("active");
+                                    }
+                                });
+                            }
+
+                            function showDropDown(item) {
+                                item.addEventListener('mouseenter', (e) => {
+                                    const parent = e.target;
+                                    if (parent.classList.contains("active")) {
+                                        const child = parent.children[1];
+                                        if (child.classList.contains("dropDown")) {
+                                            child.style.display = "block";
+                                        }
+                                    }
+                                });
+                            }
+
+                            function hideDropDown(item) {
+                                item.addEventListener('mouseleave', (e) => {
+                                    const parent = e.target;
+                                    const child = parent.children[1];
+                                    if (child.classList.contains("dropDown")) {
+                                        child.style.display = "none";
+                                    }
+                                });
+                            }
+
+                        </script>
+<%- include('footer'); %>
+
+<%- include('navAnimationScript'); %>

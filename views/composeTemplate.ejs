@@ -1,0 +1,39 @@
+<%- include('header'); %>
+
+<form action="/compose" method="post" class="compose-container">
+
+  <div class="mb-3">
+    <label for="image-link" class="form-label">Category</label>
+    <input autocomplete="off" type="text" name="blogImg" class="form-control" id="image-link"
+      placeholder="The first characted should be in Caps" />
+  </div>
+
+  <div class="mb-3">
+    <label for="image-link" class="form-label">Image Link</label>
+    <input autocomplete="off" type="text" name="blogImg" class="form-control" id="image-link" placeholder="Link" />
+  </div>
+
+  <div class="mb-3">
+    <label for="title" class="form-label">Blog Title</label>
+    <input autocomplete="off" type="text" name="blogTitle" class="form-control" id="title" placeholder="Title" />
+  </div>
+
+  <div class="mb-3">
+    <label for="body" class="form-label">Blog Body</label>
+    <input autocomplete="off" type="text" name="blogBody" class="form-control" id="body"
+      placeholder="keep it to 100 chars" />
+  </div>
+
+  <div class="mb-3">
+    <label for="date" class="form-label">Creation Date</label>
+    <input autocomplete="off" type="text" name="blogDate" class="form-control" id="date"
+      placeholder="Mention the month in small followed by the day" />
+  </div>
+
+  <button type="submit" class="btn btn-primary" name="publishWhere" value="generic">Publish Generic</button>
+  <button type="submit" class="btn btn-primary" name="publishWhere" value="doctorspeaks">Publish Doctor Speaks</button>
+</form>
+
+<%- include('footer'); %>
+
+<%- include('navAnimationScript'); %>

@@ -1,0 +1,144 @@
+<%- include('header'); %>
+
+<%if(type == 'online'){%>
+
+<section id="bookings" style="color: black;">
+    <div class="bookings-container" style="min-height: 100vh;">
+        <div class="section-header">
+            <h1 style="font-weight: 900; text-align: center; padding: 5rem 0;">Online Bookings</h1>
+        </div>
+        <div class="bookings-inner" style="display: flex; justify-content: space-evenly;">
+            <div class="name">
+                <h4 style="font-weight: 600; text-align: center;">Patient Name</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="patient-name" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.firstname%> <%=patient.lastname%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="phone">
+                <h4 style="font-weight: 600; text-align: center;">Phone no.</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="patient-name" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.phone%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="email">
+                <h4 style="font-weight: 600; text-align: center;">Email</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="booking-date" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.email%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="date">
+                <h4 style="font-weight: 600; text-align: center;">Booking Date</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="booking-date" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.bookingdate%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="time">
+                <h4 style="font-weight: 600; text-align: center;">Booking Time</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="booking-time" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.bookingtime%></h5>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</section>
+<%}else if(type == 'offline'){%>
+
+<section id="bookings" style="color: black;">
+    <div class="bookings-container" style="min-height: 100vh;">
+        <div class="section-header">
+            <h1 style="font-weight: 900; text-align: center; padding: 5rem 0;">Offline Bookings</h1>
+        </div>
+        <div class="bookings-inner" style="display: flex; justify-content: space-evenly;">
+            <div class="name">
+                <h4 style="font-weight: 600; text-align: center;">Patient Name</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="patient-name" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.firstname%> <%=patient.lastname%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="phone">
+                <h4 style="font-weight: 600; text-align: center;">Phone no.</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="patient-name" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.phone%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="email">
+                <h4 style="font-weight: 600; text-align: center;">Email</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="booking-date" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.email%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="date">
+                <h4 style="font-weight: 600; text-align: center;">Booking Date</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="booking-date" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.bookingdate%></h5>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="time">
+                <h4 style="font-weight: 600; text-align: center;">Booking Time</h4>
+                <% patients.forEach((patient)=>{%>
+                <div class="booking-time" style="margin: 2rem 0;">
+                    <h5 style="text-align: center;"><%=patient.bookingtime%></h5>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%}%>
+
+<script>
+
+    function showDropDown(item) {
+        item.addEventListener('mouseenter', (e) => {
+            const parent = e.target;
+            if (parent.classList.contains("active")) {
+                const child = parent.children[1];
+                if (child.classList.contains("dropDown")) {
+                    child.style.display = "block";
+                }
+            }
+        });
+    }
+
+    function hideDropDown(item) {
+        item.addEventListener('mouseleave', (e) => {
+            const parent = e.target;
+            const child = parent.children[1];
+            if (child.classList.contains("dropDown")) {
+                child.style.display = "none";
+            }
+        });
+    }
+
+</script>
+
+<%- include('footer'); %>
+
+<%- include('navAnimationScript'); %>

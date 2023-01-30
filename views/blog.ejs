@@ -1,0 +1,112 @@
+<%- include('header'); %>
+
+<div id="blog-container">
+
+  <div class="blog-heading">
+    <%if(type=='generic'){%>
+    <h1>Generic</h1>
+    <%}else if(type=='doctorSpeaks'){%>
+    <h1>Doctor Speaks</h1>
+    <%}%>
+  </div>
+
+
+  <form action="/blog" method="post">
+
+    <%datas.forEach((data)=>{%>
+
+    <button type="submit" name="blogPost" value=<%=data.title%>>
+      <div class="post">
+        <img class="post-img" src=<%=data.image%> alt="gas problem blog" />
+      </div>
+
+      <div class="post-info">
+        <div class="post-head">
+          <h5><%=data.title%></h5>
+        </div>
+        <div class="post-text">
+          <p><%=data.body%></p>
+        </div>
+
+        <div class="post-date">
+          <p><i class="fa-solid fa-calendar"></i> <%=data.date%></p>
+        </div>
+      </div>
+    </button>
+
+    <%})%>
+
+    </form>
+  </div>
+
+  <script>
+    const postInfo = document.querySelectorAll(".post-info");
+    const navItems = document.querySelectorAll('.nav-items');
+
+    changeActiveLink();
+
+    function changeActiveLink() {
+      navItems.forEach((item) => {
+        if (item.classList.contains("active")) {
+          item.classList.remove("active");
+        }
+        if (item.classList.contains("blog")) {
+          item.classList.add("active");
+        }
+      });
+    }
+
+    function showDropDown(item) {
+      item.addEventListener('mouseenter', (e) => {
+        const parent = e.target;
+        if (parent.classList.contains("active")) {
+          const child = parent.children[1];
+          if (child.classList.contains("dropDown")) {
+            child.style.display = "block";
+          }
+        }
+      });
+    }
+
+    function hideDropDown(item) {
+      item.addEventListener('mouseleave', (e) => {
+        const parent = e.target;
+        const child = parent.children[1];
+        if (child.classList.contains("dropDown")) {
+          child.style.display = "none";
+        }
+      });
+    }
+
+    getPostImg();
+
+    function getPostImg() {
+      postInfo.forEach((info) => {
+        info.addEventListener("mouseenter", () => {
+          const parent = info.parentElement;
+          const childPost = parent.firstElementChild;
+          const postImg = childPost.firstElementChild;
+          ImgScaleUp(postImg);
+        });
+        info.addEventListener("mouseleave", () => {
+          const parent = info.parentElement;
+          const childPost = parent.firstElementChild;
+          const postImg = childPost.firstElementChild;
+          ImgScaleDown(postImg);
+        });
+      });
+    }
+
+    function ImgScaleUp(postImg) {
+      postImg.classList.add("scale-up");
+    }
+
+    function ImgScaleDown(postImg) {
+      postImg.classList.remove("scale-up");
+    }
+
+  </script>
+
+  <%- include('footer'); %>
+
+  <%- include('navAnimationScript'); %>

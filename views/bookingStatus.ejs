@@ -1,0 +1,187 @@
+<%- include('partialHeader'); %>
+
+<%if(status == 'confirmedoffline'){%>
+
+<div class="message"
+    style="height: 100vh; display: flex; flex-direction: column; padding: 4rem; gap: 1.5rem; background: url('/images/booking-confirm-bg2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div class="message-heading">
+        <h1 style="font-weight: 900; text-align: center;">Thank you <%=name%> for choosing us!</h1>
+    </div>
+    <div class="message-text" style="display: flex; flex-direction: column; gap: 2rem;">
+        <h3 style="font-weight: 900;">Your appointment has been booked! Yay!</h3>
+        <h3 style="font-weight: 600; text-align: center;">You can <a href="/contact">click here</a> to check our exact
+            location on Google Maps</h3>
+        <p style="text-align: center; font-weight: 600;">Or<span><a href="/"> click here</a></span> to return back</p>
+    </div>
+</div>
+
+
+<%}else if(status == 'failed'){%>
+
+<h1
+    style="background: black; font-weight: 900; color: rgb(168, 0, 0); padding: 15rem 0; text-align: center; position: absolute; left: 48%; z-index: 0;">
+    Error!
+</h1>
+
+<div class="message"
+    style="height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem; gap: 1.5rem; background: url('/images/booking-fail-bg.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+    <div class="message-heading" style="color: rgb(172, 0, 0); z-index: 2">
+        <h1 style="font-weight: 900; text-align: center;">Oh-no! Something went wrong!</h1>
+    </div>
+    <div class="message-text" style="color: white; display: flex; flex-direction: column; gap: 1.5rem; z-index: 2">
+        <h3 style="font-weight: 600; text-align: center;">Please try again and make sure all
+            the necessary fields are properly filled.</h3>
+        <p style="text-align: center; font-weight: 600;">Or <span><a href="/" style="color: yellow;">click
+                    here</a></span> to return to the
+            home
+            page</p>
+    </div>
+</div>
+
+<%}else if(status == 'confirmedonline'){%>
+
+<div class="message"
+    style="height: 100vh; display: flex; flex-direction: column; padding: 4rem; gap: 1.5rem; background: url('/images/booking-confirm-online-bg2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div class="message-heading">
+        <h1 style="font-weight: 900; text-align: center;">Thank you <%=name%> for choosing us!</h1>
+    </div>
+    <div class="message-text" style="display: flex; flex-direction: column; gap: 2rem;">
+        <h3 style="font-weight: 900;">Your appointment has been booked! Yay!</h3>
+        <div class="payment-request" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+            <h4 style="width: 80rem; font-weight: 600;">Since we don't ask for or store any kind of Banking or
+                Debit/Credit card
+                information of our patients,
+                you can kindly make the payment of 450/- only @:
+            </h4>
+            <div class="payment-info" style="display: flex; justify-content: center; gap: 5rem;">
+                <div class="bank-details" style="display: flex; flex-direction: column; gap: 0.85rem;">
+                    <h4 style="font-weight: 600;">Our Bank A/C</h4>
+                    <h5>Name:- Axis Bank</h5>
+                    <h5>Branch:- Golpark</h5>
+                    <h5>Account Name:- 917020028128484</h5>
+                    <h5>IFS Code:- UTIB0000011</h5>
+                </div>
+
+                <div class="or" style="display: flex; align-items: center;">
+                    <h4 style="padding: 1rem; border-radius: 50%; background: #DC3535; color: white;">Or</h4>
+                </div>
+
+                <div class="bar-code">
+                    <h4 style="font-weight: 600;">Pay by scanning the QR</h4>
+                    <h5>(All UPI payments accepted)</h5>
+                    <div style="text-align: center; margin-top: 1rem;"><img src="/images/payment/qr-code.webp"
+                            alt="payment bar code">
+                    </div>
+                </div>
+            </div>
+
+            <div class="after-payment-steps" style="display: flex; flex-direction: column; gap: 1rem;">
+                <h5>Once the payment is complete, you can take a screenshot of your payment.</h5>
+                <h5>Then share the screenshot via <i class="fa-brands fa-whatsapp"
+                        style="font-weight: bold; color: green;"></i> @ 9007488925 along with the phone number you have
+                    submitted while booking the appointment.</h5>
+                <h5>Or you can also follow the same process but instead of sharing it via <i
+                        class="fa-brands fa-whatsapp" style="font-weight: bold; color: green;"></i>, you can mail us (<i
+                        class="fa-solid fa-envelope"></i>) @ <a
+                        href="mailto:dr.snigdhodip@gmail.com">dr.snigdhodip@gmail.com</a>.</h5>
+            </div>
+        </div>
+        <h3>Once the verification is over.</h3>
+        <h3 style="font-weight: 600; text-align: center;">One of our associates will get back to you as soon as possible
+            to further confirm your appointment.</h3>
+        <p style="text-align: center; font-weight: 600;"><span><a href="/">Click here</a></span> to return to the home
+            page</p>
+    </div>
+</div>
+<%}else if(status == 'patient-exists'){%>
+<div class="message"
+    style="height: 100vh; display: flex; flex-direction: column; padding: 4rem; gap: 3rem; background: #645CBB; background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div class="message-heading" style="color: white; display: flex; flex-direction: column; gap: 2rem;">
+        <h3 style="font-weight: 600; text-align: center;">Patient with same phone number is already booked:</h3>
+        <h3 style="text-align: center;">on
+            <%=bookingdate%> at <%=bookingtime%></h3>
+    </div>
+    <div class="message-text" style="color: white; display: flex; flex-direction: column; gap: 2rem;">
+        <h3 style="font-weight: 600; text-align: center;">If you want to book another or a new appointment kindly use a
+            different
+            phone number or call us @ <a href="tel: 9007488925" style="color: #F2CD5C;">9007488925</a> for help.</h3>
+        <h3 style="font-weight: 600; text-align: center;">If you want to make/complete a pending payment, <a
+                href="/bookingexists/completepayment" style="color: #F2CD5C;">click here</a></h3>
+    </div>
+</div>
+<%}else if(status == 'complete-payment'){%>
+
+<div class="message"
+    style="height: 100vh; display: flex; flex-direction: column; padding: 4rem; gap: 1.5rem; background: url('/images/booking-confirm-online-bg2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div class="message-heading">
+        <h1 style="font-weight: 900; text-align: center;">Complete your payment please.</h1>
+    </div>
+    <div class="message-text" style="display: flex; flex-direction: column; gap: 2rem;">
+        <h3 style="font-weight: 900;">Your appointment is booked.</h3>
+        <div class="payment-request" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+            <h4 style="width: 80rem; font-weight: 600;">Since we don't ask for or store any kind of Banking or
+                Debit/Credit card
+                information of our patients,
+                you can kindly make the payment of 450/- only @:
+            </h4>
+            <div class="payment-info" style="display: flex; justify-content: center; gap: 5rem;">
+                <div class="bank-details" style="display: flex; flex-direction: column; gap: 0.85rem;">
+                    <h4 style="font-weight: 600;">Our Bank A/C</h4>
+                    <h5>Name:- Axis Bank</h5>
+                    <h5>Branch:- Golpark</h5>
+                    <h5>Account Name:- 917020028128484</h5>
+                    <h5>IFS Code:- UTIB0000011</h5>
+                </div>
+
+                <div class="or" style="display: flex; align-items: center;">
+                    <h4 style="padding: 1rem; border-radius: 50%; background: #DC3535; color: white;">Or</h4>
+                </div>
+
+                <div class="bar-code">
+                    <h4 style="font-weight: 600;">Pay by scanning the QR</h4>
+                    <h5>(All UPI payments accepted)</h5>
+                    <div style="text-align: center; margin-top: 1rem;"><img src="/images/payment/qr-code.webp"
+                            alt="payment bar code">
+                    </div>
+                </div>
+            </div>
+
+            <div class="after-payment-steps" style="display: flex; flex-direction: column; gap: 1rem;">
+                <h5>Once the payment is complete, you can take a screenshot of your payment.</h5>
+                <h5>Then share the screenshot via <i class="fa-brands fa-whatsapp"
+                        style="font-weight: bold; color: green;"></i> @ 9007488925 along with the phone number you have
+                    submitted while booking the appointment.</h5>
+                <h5>Or you can also follow the same process but instead of sharing it via <i
+                        class="fa-brands fa-whatsapp" style="font-weight: bold; color: green;"></i>, you can mail us (<i
+                        class="fa-solid fa-envelope"></i>) @ <a
+                        href="mailto:dr.snigdhodip@gmail.com">dr.snigdhodip@gmail.com</a>.</h5>
+            </div>
+        </div>
+        <h3>Once the verification is over.</h3>
+        <h3 style="font-weight: 600; text-align: center;">One of our associates will get back to you as soon as possible
+            to further confirm your appointment.</h3>
+        <p style="text-align: center; font-weight: 600;"><span><a href="/">Click here</a></span> to return to the home
+            page</p>
+    </div>
+</div>
+
+<%}else if(status == 'message-sent'){%>
+<div class="message-container" style="height: 100vh; background: linear-gradient(to right top, #F8FFDB, #F3ECB0);">
+    <div class="dialog" style="padding: 5rem 10rem; display: flex; justify-content: center;">
+        <div class="content"
+            style="width: 30rem; border: 1px solid rgba(56, 56, 56, 0.4); border-radius: 0.5rem; overflow: hidden;">
+            <div class="header" style="background: #54B435; padding: 1rem; color: white;">
+                <h5 class="title">Message sent successfully!</h5>
+            </div>
+            <div class="body" style="padding: 1rem; background: white; line-height: 2;">
+                <p>One of our associates will get back to you within 12hrs. Thank you for getting in touch.</p>
+                <br>
+                <p><a href="/contact">Click here</a> to go back.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+
+</main>
