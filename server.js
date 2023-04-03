@@ -11,7 +11,7 @@ app.use(express.static("public"));
 app.use(
 	bodyParser.urlencoded({
 		extended: true,
-	})
+	}),
 );
 
 app.set("view engine", "ejs");
@@ -23,7 +23,7 @@ mongoose.connect(
 	`mongodb+srv://admin-moinak:${process.env.MONGO_DB_ATLAS_PASSWORD}@clusterv2.g2smmdo.mongodb.net/sahaBlogDB`,
 	{
 		useNewUrlParser: true,
-	}
+	},
 );
 
 const genericBlogSchema = {
@@ -507,7 +507,14 @@ app.post("/timeset", async (req, res) => {
 				bookingTime = await getOnlineExistingPatientBookingTime(phoneNum);
 				res.redirect("/patientexists");
 			} else if (!exists) {
-				const resp = await savePatientOnline(time, firstName, lastName, date, email, phoneNum);
+				const resp = await savePatientOnline(
+					time,
+					firstName,
+					lastName,
+					date,
+					email,
+					phoneNum,
+				);
 				console.log(`patient booked online ${resp}`);
 				res.redirect("/bookingconfirmedonline");
 			}
@@ -518,7 +525,14 @@ app.post("/timeset", async (req, res) => {
 				bookingTime = await getOfflineExistingPatientBookingTime(phoneNum);
 				res.redirect("/patientexists");
 			} else if (!exists) {
-				const resp = await savePatientOffline(time, firstName, lastName, date, email, phoneNum);
+				const resp = await savePatientOffline(
+					time,
+					firstName,
+					lastName,
+					date,
+					email,
+					phoneNum,
+				);
 				console.log(`patient booked offline ${resp}`);
 				res.redirect("/bookingconfirmedoffline");
 			}
@@ -551,7 +565,7 @@ app.post("/comments", async (req, res) => {
 			comment,
 			title,
 			postingDate,
-			postingTime
+			postingTime,
 		);
 
 		console.log(resp);
@@ -631,8 +645,8 @@ async function saveDataDoctorSpeaks(bImg, bTitle, bBody, bDate, res) {
 }
 
 function getTitle(datasGeneric, datasDoctorSpeaks, post) {
-	return new Promise((resolve) => {
-		datasGeneric.forEach((data) => {
+	return new Promise(resolve => {
+		datasGeneric.forEach(data => {
 			const title = data.title;
 			const idxOfFirstSpace = title.indexOf(" ");
 			if (idxOfFirstSpace != -1) {
@@ -644,7 +658,7 @@ function getTitle(datasGeneric, datasDoctorSpeaks, post) {
 				resolve(title);
 			}
 		});
-		datasDoctorSpeaks.forEach((data) => {
+		datasDoctorSpeaks.forEach(data => {
 			const title = data.title;
 			const idxOfFirstSpace = title.indexOf(" ");
 			if (idxOfFirstSpace != -1) {
@@ -662,8 +676,8 @@ function getTitle(datasGeneric, datasDoctorSpeaks, post) {
 }
 
 function getCategory(datasGeneric, datasDoctorSpeaks, post) {
-	return new Promise((resolve) => {
-		datasGeneric.forEach((data) => {
+	return new Promise(resolve => {
+		datasGeneric.forEach(data => {
 			const category = data.category;
 			const title = data.title;
 			const idxOfFirstSpace = title.indexOf(" ");
@@ -676,7 +690,7 @@ function getCategory(datasGeneric, datasDoctorSpeaks, post) {
 				resolve(category);
 			}
 		});
-		datasDoctorSpeaks.forEach((data) => {
+		datasDoctorSpeaks.forEach(data => {
 			const category = data.category;
 			const title = data.title;
 			const idxOfFirstSpace = title.indexOf(" ");
@@ -693,8 +707,8 @@ function getCategory(datasGeneric, datasDoctorSpeaks, post) {
 }
 
 function getDate(datasGeneric, datasDoctorSpeaks, post) {
-	return new Promise((resolve) => {
-		datasGeneric.forEach((data) => {
+	return new Promise(resolve => {
+		datasGeneric.forEach(data => {
 			const date = data.date;
 			const title = data.title;
 			const idxOfFirstSpace = title.indexOf(" ");
@@ -707,7 +721,7 @@ function getDate(datasGeneric, datasDoctorSpeaks, post) {
 				resolve(date);
 			}
 		});
-		datasDoctorSpeaks.forEach((data) => {
+		datasDoctorSpeaks.forEach(data => {
 			const date = data.date;
 			const title = data.title;
 			const idxOfFirstSpace = title.indexOf(" ");
@@ -727,13 +741,13 @@ function getPatientData(date, patientDatas) {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const onlinePatientDetails = await OnlinePatient.find({});
-			onlinePatientDetails.forEach((patient) => {
+			onlinePatientDetails.forEach(patient => {
 				if (patient.bookingdate == date) {
 					patientDatas.push(patient);
 				}
 			});
 			const offlinePatientDetails = await OfflinePatient.find({});
-			offlinePatientDetails.forEach((patient) => {
+			offlinePatientDetails.forEach(patient => {
 				if (patient.bookingdate == date) {
 					patientDatas.push(patient);
 				}
@@ -750,7 +764,7 @@ async function checkforExistingOnlinePatient(phoneNum) {
 	try {
 		const exists = false;
 		const onlinePatientDetails = await OnlinePatient.find({});
-		onlinePatientDetails.forEach((patient) => {
+		onlinePatientDetails.forEach(patient => {
 			if (patient.phone == phoneNum) {
 				exists = true;
 			}
@@ -765,7 +779,7 @@ async function checkforExistingOfflinePatient(phoneNum) {
 	try {
 		const exists = false;
 		const offlinePatientDetails = await OfflinePatient.find({});
-		offlinePatientDetails.forEach((patient) => {
+		offlinePatientDetails.forEach(patient => {
 			if (patient.phone == phoneNum) {
 				exists = true;
 			}
@@ -847,20 +861,20 @@ async function uploadComment(
 	comment,
 	title,
 	postingDate,
-	postingTime
+	postingTime,
 ) {
 	try {
 		let dataCategory;
 		const genericDatas = await GenericBlog.find({});
 		const doctorSpeaksDatas = await DoctorSpeak.find({});
 
-		genericDatas.forEach((data) => {
+		genericDatas.forEach(data => {
 			if (data.title == title) {
 				dataCategory = data.category;
 			}
 		});
 
-		doctorSpeaksDatas.forEach((data) => {
+		doctorSpeaksDatas.forEach(data => {
 			if (data.title == title) {
 				dataCategory = data.category;
 			}
@@ -880,7 +894,7 @@ async function uploadComment(
 							postingTime: postingTime,
 						},
 					},
-				}
+				},
 			);
 			return `Comment updated ${result}`;
 		} else if (dataCategory == "Doctor Speaks") {
@@ -897,7 +911,7 @@ async function uploadComment(
 							postingTime: postingTime,
 						},
 					},
-				}
+				},
 			);
 			return `Comment updated ${result}`;
 		}
